@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Erased</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Erased</h1>
+    <pre>
+      &lt;div data-erase&gt;
+        &lt;p&gt;This paragraph will be affected.&lt;/p&gt;
+        &lt;p data-erase-ignore&gt;This paragraph 
+        will not be affected.&lt;/p&gt;
+      &lt;/div&gt;
+    </pre>
+    <div data-erase>
+      <p>This paragraph will be affected. Words like press, war & freedom will disappear.</p>
+      <p data-erase-ignore>This paragraph will not be affected.</p>
+    </div>
+  </body>
+</html>
