@@ -1,4 +1,4 @@
-import { Parser } from "./parser";
+import { Parser } from "./Parser";
 import template from "./template";
 
 import "./styles/erased.css";
