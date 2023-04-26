@@ -31,7 +31,7 @@ Download the `/cdn` folder and drop it in your project. Make sure to also includ
 
 ## How to use
 
-Every site is different, so to withhold interfering with the experience of the user, erase.js can be intergrated in specific sections of your website. By adding the `data-erase` tag on a container, that container will now display the Erased font. To ignore certain parts inside the `data-erase` container you can use `data-erase-ignore`.
+Every site is different, so to withhold interfering with the experience of the user, erase.js can be intergrated in specific sections of your website. By adding the `data-erase` attribute on a HTMLElement, that element will now display the Erased font. To ignore certain parts inside the `data-erase` element you can use `data-erase-ignore`.
 
 EG.
 
