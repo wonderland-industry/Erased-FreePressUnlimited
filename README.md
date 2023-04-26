@@ -9,11 +9,11 @@ The Erased toggle allows users to easily retrieve the font file from our GitHub 
 
 ### CDN
 
-Include `https://erased-plugin.netlify.app/erased.js` and `https://erased-plugin.netlify.app/erased.css` to head of your HTML and _the Erased font_ message will for press freedom will appear on your website.
+Include `https://erased-plugin.netlify.app/erase.js` and `https://erased-plugin.netlify.app/erase.css` to head of your HTML and _the Erased font_ message will for press freedom will appear on your website.
 
 ```html
-<link rel="stylesheet" href="https://erased-plugin.netlify.app/erased.css" />`
-<script src="https://erased-plugin.netlify.app/erased.js"></script>
+<link rel="stylesheet" href="https://erased-plugin.netlify.app/erase.css" />
+<script src="https://erased-plugin.netlify.app/erase.js"></script>
 ```
 
 The Erased Font is available in five locales (nl, fr, es, en, ru), based on the language various words will be erased. So it is important to include the the right CSS file in the language your content is written in. The CSS files follow this name convention `erased.[locale].css`.
@@ -21,8 +21,8 @@ The Erased Font is available in five locales (nl, fr, es, en, ru), based on the 
 For example Dutch:
 
 ```html
-<link rel="stylesheet" href="https://erased-plugin.netlify.app/erased.nl.css" />`
-<script src="https://erased-plugin.netlify.app/erased.js"></script>
+<link rel="stylesheet" href="https://erased-plugin.netlify.app/erase.nl.css" />
+<script src="https://erased-plugin.netlify.app/erase.js"></script>
 ```
 
 ### Vendor
