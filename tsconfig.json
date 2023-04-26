@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "typeRoots": ["@types", "./node_modules/@types"],
+    "module": "es6",
+    "target": "es5",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "sourceMap": false,
+    "outDir": "dist/package",
+    "esModuleInterop": true,
+    "baseUrl": "."
+  },
+  "files": ["src/index.ts"]
+}
