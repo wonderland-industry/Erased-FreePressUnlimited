@@ -9,20 +9,20 @@ The Erased toggle allows users to easily retrieve the font file from our GitHub 
 
 ### CDN
 
-Include `https://erased-plugin.netlify.app/erased.js` and `https://erased-plugin.netlify.app/erased.css` to head of your HTML and _the Erased font_ banner will stand up for press freedom on your website.
+Include `https://erased-plugin.netlify.app/erased.js` and `https://erased-plugin.netlify.app/erased.css` to head of your HTML and _the Erased font_ message will for press freedom will appear on your website.
 
-```
-    <link rel="stylesheet" href="https://erased-plugin.netlify.app/erased.css">`
-    <script src="https://erased-plugin.netlify.app/erased.js"></script>
+```html
+<link rel="stylesheet" href="https://erased-plugin.netlify.app/erased.css" />`
+<script src="https://erased-plugin.netlify.app/erased.js"></script>
 ```
 
 The Erased Font is available in five locales (nl, fr, es, en, ru), based on the language various words will be erased. So it is important to include the the right CSS file in the language your content is written in. The CSS files follow this name convention `erased.[locale].css`.
 
-EG. Dutch:
+For example Dutch:
 
-```
-    <link rel="stylesheet" href="https://erased-plugin.netlify.app/erased.nl.css">`
-    <script src="https://erased-plugin.netlify.app/erased.js"></script>
+```html
+<link rel="stylesheet" href="https://erased-plugin.netlify.app/erased.nl.css" />`
+<script src="https://erased-plugin.netlify.app/erased.js"></script>
 ```
 
 ### Vendor
@@ -33,13 +33,13 @@ Download the `/cdn` folder and drop it in your project. Make sure to also includ
 
 Every site is different, so to withhold interfering with the experience of the user, erase.js can be intergrated in specific sections of your website. By adding the `data-erase` attribute on a HTMLElement, that element will now display the Erased font. To ignore certain parts inside the `data-erase` element you can use `data-erase-ignore`.
 
-EG.
+For example:
 
-```
+```html
     <div data-erase>
         <p>This text will be displayed with the Erased font.</p>
         <figure>
-            <img ... />
+            <img src="..." />
             <figcaption data-erase-ignore>This text will be ignored by the Erased font.</figcaption>
         </figure />
     </div>
@@ -59,19 +59,19 @@ In `src/fonts` you can find the .otf, .woff & .woff2 font files so they can be u
 
 The CDN files already include a banner and is build for plug and play usage. If you'd like to do it yourself you can include the package files (`/package`). This will contain the base functionality of erase.js.
 
-EG.
+For example:
 
-```
-    // These are the default values
-    const erase = new Erase({
-        context: document.body,
-        selector: "erase",
-        ignore: "erase-ignore",
-    });
+```js
+// These are the default values
+const erase = new Erase({
+  context: document.body,
+  selector: "erase",
+  ignore: "erase-ignore",
+});
 
-    // Show erased words
-    erase.ligeratures = true;
+// Show erased words
+erase.ligeratures = true;
 
-    // Hide erased words
-    erase.ligeratures = false;
+// Hide erased words
+erase.ligeratures = false;
 ```
