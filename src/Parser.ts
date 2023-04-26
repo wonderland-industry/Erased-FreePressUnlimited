@@ -2,15 +2,22 @@ interface TemplateAttributes {
   [key: string]: string | number | boolean;
 }
 
-type Template = (attributes: TemplateAttributes) => string;
+interface TemplateOptions {
+  selector: string;
+}
+
+type Template = (attributes: TemplateAttributes, options: TemplateOptions) => string;
 
 export class Parser {
-  public elements: any;
   private element: HTMLElement;
+  private selector: string;
   private template: Template;
 
-  constructor({ element, template }: { element: HTMLElement; template: Template }) {
+  public elements: any;
+
+  constructor({ element, template, selector = "select" }: { element: HTMLElement; template: Template; selector?: string }) {
     this.element = element;
+    this.selector = selector;
     this.template = template;
   }
 
@@ -25,7 +32,7 @@ export class Parser {
    * @param attributes Object with template variables
    */
   public render(attributes: TemplateAttributes) {
-    this.element.innerHTML = this.template(attributes);
+    this.element.innerHTML = this.template(attributes, { selector: this.selector });
     this.fillElements();
   }
 
@@ -35,8 +42,8 @@ export class Parser {
   }
   /**
    * Binds the nodes selected
-   * with [data-select] to the
-   * class.
+   * with [data-{selector}] to
+   * the class.
    */
   private fillElements() {
     const nodes: NodeListOf<HTMLElement> = this.element.querySelectorAll("[data-select]");

@@ -1,161 +1,102 @@
-import { Parser } from "./Parser";
-import template from "./template";
-
-import "./styles/erased.css";
-// @ts-ignore
-import styles from "./styles/banner.module.css";
-
-interface ConstructorAttributes {
-  selector: string;
-  config: { [key: string]: string | number };
+if (process.env.LANG_EN) {
+  require("./styles/erased.en.css");
 }
-
-interface MountAttributes {
-  element: HTMLElement;
+if (process.env.LANG_ES) {
+  require("./styles/erased.es.css");
+}
+if (process.env.LANG_FR) {
+  require("./styles/erased.fr.css");
+}
+if (process.env.LANG_NL) {
+  require("./styles/erased.nl.css");
+}
+if (process.env.LANG_RU) {
+  require("./styles/erased.ru.css");
+}
+if (!process.env.LANG_RU && !process.env.LANG_NL && !process.env.LANG_FR && !process.env.LANG_ES && !process.env.LANG_EN) {
+  require("./styles/erased.css");
 }
 
 export class Erase {
-  public enabled: boolean = false;
-  public parser: Parser;
-  public selector: string;
-  public config: { [key: string]: string | number };
+  private value: boolean;
+  private context: Element;
+  private elements: Array<HTMLElement>;
 
-  /**
-   * @param selector String on what element effect needs to be applied.
-   * @param config Object with template config.
-   */
-  constructor({ selector, config }: ConstructorAttributes) {
-    this.selector = selector;
-    this.config = config;
+  constructor({ context = document.body, selector = "erase", ignore = "erase-ignore" }: { context: Element; selector: string; ignore: string }) {
+    this.context = context;
+    this.fillElements(selector);
+    this.ignore(ignore);
+    this.include(selector);
   }
 
-  /**
-   * Mounts banners to DOM, initializes
-   * font and listeners.
-   *
-   * @param element Mount element for banner.
-   */
-  public mount({ element }: MountAttributes): void {
-    this.parser = new Parser({ element, template: template });
-    this.parser.render({ ...this.config, visible: false });
+  public set ligeratures(value: boolean) {
+    this.value = value;
+    this.update();
+  }
 
-    /**
-     *
-     * Fonts
-     */
-    this.ignoreFont();
-    this.setFont();
-    this.setFontLigatures("off");
-
-    /**
-     *
-     * Events
-     */
-    this.parser.elements.button.addEventListener("click", this.handleClick);
+  public get ligeratures() {
+    return this.value;
   }
 
   /**
    *
-   * Unmounts banner and removes
-   * inline font styles.
-   */
-  public unmount() {
-    this.parser.destroy();
-
-    // @todo remove inline font styles.
-  }
-
-  /**
+   * Adds the computed font
+   * style as inline style.
    *
-   * Shows the banner with
-   * transition in animation.
+   * @param selector the ignore data selector.
    */
-  public open() {
-    this.parser.elements.container.classList.add(styles.visible);
-  }
-
-  /**
-   *
-   * Hides the banner with
-   * transition out animation.
-   */
-  public close() {
-    this.parser.elements.container.classList.remove(styles.visible);
-  }
-
-  public enable() {
-    this.enabled = true;
-    this.setFontLigatures("on");
-  }
-
-  public disable() {
-    this.enabled = false;
-    this.setFontLigatures("off");
-  }
-
-  private getArrayBySelector(selector: string) {
-    const nodes: NodeListOf<HTMLElement> = document.body.querySelectorAll(selector);
+  private ignore(selector: string) {
+    const nodes: NodeListOf<HTMLElement> = this.context.querySelectorAll(`[data-${selector}]`);
     const array: Array<HTMLElement> = Array.from(nodes);
-    return array;
-  }
 
-  /**
-   *
-   * Add original Font Family to the
-   * ignored elements.
-   */
-  private ignoreFont() {
-    const array = this.getArrayBySelector(`[data-${this.selector}-ignore]`);
-
-    let styles;
-    let fontFamily;
-    let index = array.length;
-
-    while (index--) {
+    for (let index = 0, styles = null, limit = array.length; index < limit; index++) {
       styles = window.getComputedStyle(array[index]);
-      fontFamily = styles.getPropertyValue("font-family");
-      array[index].style.fontFamily = fontFamily;
+      array[index].style.fontFamily = styles.getPropertyValue("font-family");
     }
   }
 
   /**
    *
-   * Add the Erased Font Family to
-   * the selected elements.
-   */
-  private setFont() {
-    const array = this.getArrayBySelector(`[data-${this.selector}]`);
-
-    let index = array.length;
-
-    while (index--) {
-      array[index].style.fontFamily = "The Erased";
-    }
-  }
-
-  /**
+   * Adds initial styling
+   * that have the data-erase
+   * selector.
    *
-   * Updates the Font Feature Settings
-   * ligatures.
+   * @param selector the erase selector
    */
-  private setFontLigatures(value: "on" | "off") {
-    const nodes: NodeListOf<HTMLElement> = document.body.querySelectorAll(`[data-${this.selector}]`);
+  private include(selector: string) {
+    const nodes: NodeListOf<HTMLElement> = this.context.querySelectorAll(`[data-${selector}]`);
     const array: Array<HTMLElement> = Array.from(nodes);
 
-    let index = array.length;
-
-    while (index--) {
-      array[index].style.fontFeatureSettings = `"liga" ${value}`;
+    for (let index = 0, limit = array.length; index < limit; index++) {
+      array[index].style.fontFamily = "The Erased";
+      array[index].style.fontFeatureSettings = `"liga" off`;
     }
   }
 
-  private handleClick = () => {
-    if (!this.enabled) {
-      this.enable();
-    } else {
-      this.disable();
+  /**
+   *
+   * Selects all the elements
+   * that have the data-erase
+   * attribute.
+   *
+   * @param selector the erase selector
+   */
+  private fillElements(selector: string) {
+    const nodes: NodeListOf<HTMLElement> = this.context.querySelectorAll(`[data-${selector}]`);
+    const array: Array<HTMLElement> = Array.from(nodes);
+    this.elements = array;
+  }
+
+  /**
+   *
+   * Update ligeratures.
+   */
+  update() {
+    const value = this.ligeratures ? "on" : "off";
+    for (let index = 0, limit = this.elements.length; index < limit; index++) {
+      this.elements[index].style.fontFeatureSettings = `"liga" ${value}`;
     }
-  };
+  }
 }
 
 export default Erase;

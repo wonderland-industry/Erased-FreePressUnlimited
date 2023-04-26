@@ -1,8 +1,8 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
+const webpack = require("webpack");
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const webpack = require("webpack");
 
 const stylesHandler = MiniCssExtractPlugin.loader;
 
@@ -10,16 +10,13 @@ const config = (env) => {
   return {
     target: "web",
     entry: {
-      index: "./src/Erase.ts",
+      index: "./src/index.ts",
     },
     output: {
-      path: path.resolve(__dirname, "./package"),
+      path: path.resolve(__dirname, "./cdn"),
       filename: env.lang ? `erase.${env.lang}.js` : "erase.js",
-      library: "Erase",
-      libraryTarget: "umd",
-      globalObject: "this",
-      umdNamedDefine: true,
     },
+
     module: {
       rules: [
         {
