@@ -158,58 +158,6 @@
   left: 0;
 }
 
-/* 
-
-.container * {
-  margin: 0;
-  padding: 0;
-}
-
-.container.visible {
-  transform: translateY(0px);
-}
-
-.heading {
-  font-family: "The Erased";
-}
-
-.heading svg {
-  margin: 0 10px 0 0;
-  width: 30px;
-  vertical-align: middle;
-}
-
-.button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
-.paragraph {
-  margin: 20px 0 0;
-
-  font-family: "Avenir", sans-serif;
-  font-style: normal;
-  font-size: 12px;
-  line-height: 16px;
-  color: #000000;
-}
-
-.paragraph em {
-  font-style: normal;
-  font-weight: 900;
-}
-
-.paragraph a {
-  font-style: normal;
-  font-weight: 900;
-  text-decoration: underline;
-}
-
-.paragraph a:visited {
-  color: #000000;
-} */
-
 @media (min-width: 769px) {
   .container {
     padding: 15px 40px;
