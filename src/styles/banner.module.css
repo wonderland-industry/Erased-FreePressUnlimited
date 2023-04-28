@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "Avenir";
+  src: url("../fonts/banner/Avenir-Roman.woff2") format("woff2");
+
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: url("../fonts/banner/Avenir-Heavy.woff2") format("woff2");
+
+  font-style: normal;
+  font-weight: 800;
+}
+
 .container {
   position: fixed;
   bottom: 0;
