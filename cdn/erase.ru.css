@@ -73,6 +73,10 @@
   text-align: left;
 }
 
+.CZvlMiTaJPn2Fw1rO3aC a:hover {
+  opacity: 0.5;
+}
+
 .CZvlMiTaJPn2Fw1rO3aC label {
   font-size: 10px;
 }
@@ -156,8 +160,8 @@
 
   height: 30px;
   width: 30px;
-  background: #ffe600;
   border: 2px solid #282828;
+  background: #eeeeee;
   border-radius: 100px;
   pointer-events: none;
 }
@@ -178,6 +182,8 @@
 .CZvlMiTaJPn2Fw1rO3aC label input[type="checkbox"]:checked + span::after {
   right: 0;
   left: auto;
+
+  background: #ffe600;
 }
 
 @media (min-width: 769px) {
@@ -208,7 +214,6 @@
   .CZvlMiTaJPn2Fw1rO3aC a,
   .CZvlMiTaJPn2Fw1rO3aC a:visited,
   .CZvlMiTaJPn2Fw1rO3aC a:link,
-  .CZvlMiTaJPn2Fw1rO3aC a:hover,
   .CZvlMiTaJPn2Fw1rO3aC a:active,
   .CZvlMiTaJPn2Fw1rO3aC a:focus,
   .CZvlMiTaJPn2Fw1rO3aC em,
@@ -223,7 +228,7 @@
   }
 
   .CZvlMiTaJPn2Fw1rO3aC label span:after {
-    border: 4px solid #282828;
+    border: 5px solid #282828;
   }
 }
 
