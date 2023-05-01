@@ -6,23 +6,6 @@ import config from "./config";
 
 /**
  *
- * Create MOUNT element and
- * appends it to the body.
- */
-const MOUNT = document.createElement("div");
-document.body.appendChild(MOUNT);
-
-/**
- *
- * Initialize HTML parser, template
- * function is rendered to HTML and
- * injected in the MOUNT element.
- */
-const parser = new Parser({ element: MOUNT, template: template });
-parser.render(config);
-
-/**
- *
  * Initialise erase.js with the
  * default values.
  */
@@ -34,14 +17,39 @@ const erase = new Erase({
 
 /**
  *
- * Set initial state.
+ * Only show banner when
+ * data-erase attribute is
+ * ont the page
  */
-erase.ligeratures = parser.elements.checkbox.checked;
+if (erase.hasElements) {
+  /**
+   *
+   * Create MOUNT element and
+   * appends it to the body.
+   */
+  const MOUNT = document.createElement("div");
+  document.body.appendChild(MOUNT);
 
-/**
- *
- * Set state on checkbox change.
- */
-parser.elements.checkbox.addEventListener("change", () => {
+  /**
+   *
+   * Initialize HTML parser, template
+   * function is rendered to HTML and
+   * injected in the MOUNT element.
+   */
+  const parser = new Parser({ element: MOUNT, template: template });
+  parser.render(config);
+
+  /**
+   *
+   * Set initial state.
+   */
   erase.ligeratures = parser.elements.checkbox.checked;
-});
+
+  /**
+   *
+   * Set state on checkbox change.
+   */
+  parser.elements.checkbox.addEventListener("change", () => {
+    erase.ligeratures = parser.elements.checkbox.checked;
+  });
+}

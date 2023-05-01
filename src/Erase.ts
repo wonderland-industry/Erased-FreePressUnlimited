@@ -29,6 +29,10 @@ export class Erase {
     this.include(selector);
   }
 
+  get hasElements(): boolean {
+    return this.elements.length > 0;
+  }
+
   public set ligeratures(value: boolean) {
     this.value = value;
     this.update();
