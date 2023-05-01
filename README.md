@@ -16,7 +16,7 @@ Include `https://erased-plugin.netlify.app/erase.js` and `https://erased-plugin.
 <script src="https://erased-plugin.netlify.app/erase.js" defer></script>
 ```
 
-The Erased Font is available in five locales (nl, fr, es, en, ru), based on the language various words will be erased. So it is important to include the the right CSS file in the language your content is written in. The CSS files follow this name convention `erased.[locale].css`.
+The Erased Font is available in six locales (nl, fr, es, en, ru & ar), based on the language various words will be erased. So it is important to include the the right CSS file in the language your content is written in. The CSS files follow this name convention `erased.[locale].css`.
 
 For example Dutch:
 
