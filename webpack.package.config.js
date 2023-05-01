@@ -47,6 +47,7 @@ const config = (env) => {
         "process.env.LANG_FR": env.lang === "fr",
         "process.env.LANG_NL": env.lang === "nl",
         "process.env.LANG_RU": env.lang === "ru",
+        "process.env.LANG_AR": env.lang === "ar",
       }),
       new MiniCssExtractPlugin({ filename: env.lang ? `erase.${env.lang}.css` : "erase.css" }),
     ],
