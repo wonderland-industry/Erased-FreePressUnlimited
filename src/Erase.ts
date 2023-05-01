@@ -13,7 +13,10 @@ if (process.env.LANG_NL) {
 if (process.env.LANG_RU) {
   require("./styles/erased.ru.css");
 }
-if (!process.env.LANG_RU && !process.env.LANG_NL && !process.env.LANG_FR && !process.env.LANG_ES && !process.env.LANG_EN) {
+if (process.env.LANG_AR) {
+  require("./styles/erased.ar.css");
+}
+if (!process.env.LANG_RU && !process.env.LANG_NL && !process.env.LANG_FR && !process.env.LANG_ES && !process.env.LANG_EN && !process.env.LANG_AR) {
   require("./styles/erased.css");
 }
 
