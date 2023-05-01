@@ -24,7 +24,7 @@ export const template = (attributes: Attributes, options: Options): string => `
 
             <label>
                 ${attributes.button}
-                <input type="checkbox" data-${options.selector}="checkbox">
+                <input type="checkbox" data-${options.selector}="checkbox" checked>
                 <span></span>
             </label>
         </div>
