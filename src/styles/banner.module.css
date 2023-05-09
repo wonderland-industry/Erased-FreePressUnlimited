@@ -181,7 +181,7 @@
   background: #ffe600;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 869px) {
   .container {
     padding: 15px 40px;
   }
