@@ -6,7 +6,10 @@ interface TemplateOptions {
   selector: string;
 }
 
-type Template = (attributes: TemplateAttributes, options: TemplateOptions) => string;
+type Template = (
+  attributes: TemplateAttributes,
+  options: TemplateOptions
+) => string;
 
 export class Parser {
   private element: HTMLElement;
@@ -15,7 +18,15 @@ export class Parser {
 
   public elements: any;
 
-  constructor({ element, template, selector = "select" }: { element: HTMLElement; template: Template; selector?: string }) {
+  constructor({
+    element,
+    template,
+    selector = "select",
+  }: {
+    element: HTMLElement;
+    template: Template;
+    selector?: string;
+  }) {
     this.element = element;
     this.selector = selector;
     this.template = template;
@@ -32,8 +43,19 @@ export class Parser {
    * @param attributes Object with template variables
    */
   public render(attributes: TemplateAttributes) {
-    this.element.innerHTML = this.template(attributes, { selector: this.selector });
+    this.element.innerHTML = this.template(attributes, {
+      selector: this.selector,
+    });
     this.fillElements();
+
+    const button = this.element.getElementsByTagName("button")?.[0];
+    button.addEventListener("click", () => {
+      if (this.element.hasAttribute("data-closed")) {
+        this.element.removeAttribute("data-closed");
+      } else {
+        this.element.setAttribute("data-closed", "true");
+      }
+    });
   }
 
   public destroy() {
@@ -46,7 +68,8 @@ export class Parser {
    * the class.
    */
   private fillElements() {
-    const nodes: NodeListOf<HTMLElement> = this.element.querySelectorAll("[data-select]");
+    const nodes: NodeListOf<HTMLElement> =
+      this.element.querySelectorAll("[data-select]");
     const array: Array<HTMLElement> = Array.from(nodes);
     const object: { [key: string]: HTMLElement } = {};
 

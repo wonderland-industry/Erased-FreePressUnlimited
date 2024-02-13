@@ -36,7 +36,7 @@ if (erase.hasElements) {
    * function is rendered to HTML and
    * injected in the MOUNT element.
    */
-  const parser = new Parser({ element: MOUNT, template: template });
+  const parser = new Parser({ element: MOUNT, template });
   parser.render(config);
 
   /**
