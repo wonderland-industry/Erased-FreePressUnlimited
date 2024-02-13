@@ -11,7 +11,7 @@ type Template = (
   options: TemplateOptions
 ) => string;
 
-export class Parser {
+export class Banner {
   private element: HTMLElement;
   private selector: string;
   private template: Template;
@@ -46,14 +46,14 @@ export class Parser {
     this.element.innerHTML = this.template(attributes, {
       selector: this.selector,
     });
+
     this.fillElements();
 
-    const button = this.element.getElementsByTagName("button")?.[0];
-    button.addEventListener("click", () => {
+    this.elements?.handle?.addEventListener("click", () => {
       if (this.element.hasAttribute("data-closed")) {
         this.element.removeAttribute("data-closed");
       } else {
-        this.element.setAttribute("data-closed", "true");
+        this.element.setAttribute("data-closed", "");
       }
     });
   }
@@ -62,6 +62,15 @@ export class Parser {
     this.element.innerHTML = "";
     this.elements = [];
   }
+
+  public setLigeratures(value: boolean) {
+    if (value) {
+      this.element.setAttribute("data-ligeratures", "");
+    } else {
+      this.element.removeAttribute("data-ligeratures");
+    }
+  }
+
   /**
    * Binds the nodes selected
    * with [data-{selector}] to
@@ -82,4 +91,4 @@ export class Parser {
   }
 }
 
-export default Parser;
+export default Banner;

@@ -1,5 +1,5 @@
 import { Erase } from "./Erase";
-import { Parser } from "./Parser";
+import { Banner } from "./Banner";
 
 import template from "./template";
 import config from "./config";
@@ -28,6 +28,7 @@ if (erase.hasElements) {
    * appends it to the body.
    */
   const MOUNT = document.createElement("div");
+  MOUNT.setAttribute("data-erase-ignore", "");
   document.body.appendChild(MOUNT);
 
   /**
@@ -36,20 +37,22 @@ if (erase.hasElements) {
    * function is rendered to HTML and
    * injected in the MOUNT element.
    */
-  const parser = new Parser({ element: MOUNT, template });
-  parser.render(config);
+  const banner = new Banner({ element: MOUNT, template });
+  banner.render(config);
 
   /**
    *
    * Set initial state.
    */
-  erase.ligeratures = parser.elements.checkbox.checked;
+  erase.ligeratures = banner.elements.checkbox.checked;
+  banner.setLigeratures(banner.elements.checkbox.checked);
 
   /**
    *
    * Set state on checkbox change.
    */
-  parser.elements.checkbox.addEventListener("change", () => {
-    erase.ligeratures = parser.elements.checkbox.checked;
+  banner.elements.checkbox.addEventListener("change", () => {
+    erase.ligeratures = banner.elements.checkbox.checked;
+    banner.setLigeratures(banner.elements.checkbox.checked);
   });
 }

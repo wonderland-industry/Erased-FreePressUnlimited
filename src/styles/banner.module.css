@@ -6,6 +6,8 @@
   font-weight: 400;
 }
 
+/* Container */
+
 .container,
 .container * {
   box-sizing: border-box;
@@ -36,6 +38,8 @@
     width: 100px;
   }
 }
+
+/* Open / close handle */
 
 .handle {
   position: absolute;
@@ -94,6 +98,8 @@
   }
 }
 
+/* Container Content */
+
 .content {
   display: flex;
   gap: 15px;
@@ -114,11 +120,27 @@
   }
 }
 
+/* Banner Erased text */
+
+.header,
+.event > div,
+.body {
+  font-family: "The Erased", serif;
+  font-feature-settings: "liga" off;
+}
+
+[data-ligeratures] > .container .header,
+[data-ligeratures] > .container .event > div,
+[data-ligeratures] > .container .body {
+  font-feature-settings: "liga";
+}
+
+/* Header */
+
 .header {
   font-size: 18px;
   line-height: 18px;
   width: 100%;
-  font-family: "The Erased", serif;
   color: #282828;
   display: flex;
   gap: 15px;
@@ -145,12 +167,15 @@
   }
 }
 
+/* Body */
+
 .body {
   font-size: 13px;
   line-height: 130%;
   white-space: wrap;
-  font-family: "The Erased", serif;
   color: #282828;
+  font-style: normal;
+  text-align: left;
 
   width: 100%;
   flex-basis: 100%;
@@ -160,32 +185,13 @@
   align-items: flex-start;
 }
 
-.body,
-.body a,
-.body a:visited,
-.body a:link,
-.body a:hover,
-.body a:active,
-.body a:focus,
-.body em {
-  font-size: 13px;
-  line-height: 130%;
-  font-family: "The Erased", serif;
-  font-style: normal;
-  text-align: left;
-}
-
-.body a {
-  text-decoration: underline;
-}
-
-.body,
 .body a,
 .body a:visited,
 .body a:link,
 .body a:hover,
 .body a:active,
 .body a:focus {
+  text-decoration: underline;
   color: #282828;
 }
 
@@ -207,12 +213,13 @@
   }
 }
 
+/* Event */
+
 .event {
   font-size: 0;
 }
 
 .event > div {
-  font-family: "The Erased", serif;
   font-size: 11px;
   line-height: 11px;
   display: inline-block;
@@ -235,6 +242,8 @@
     display: none;
   }
 }
+
+/* Switch */
 
 .switch {
   font-family: "Avenir", sans-serif;
@@ -359,6 +368,8 @@
   left: 0;
   content: "on";
 }
+
+/* Footer */
 
 .footer {
   padding: 10px 15px;

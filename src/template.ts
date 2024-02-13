@@ -16,7 +16,10 @@ interface Options {
 
 export const template = (attributes: Attributes, options: Options): string => `
     <div class="${styles.container}" data-${options.selector}="container">
-        <button class="${styles.handle}"></button>
+        <button 
+            class="${styles.handle}" 
+            data-${options.selector}="handle"
+        ></button>
         <div class="${styles.content}">
             <h3 class="${styles.header}">
                 <span>${attributes.heading}</span>
@@ -30,10 +33,8 @@ export const template = (attributes: Attributes, options: Options): string => `
             <div class="${styles.body}">
                 <p>${attributes.paragraph}</p>
                 <div class="${styles.event}">
-                    <div>${attributes?.eventDate ?? "3 May"}</div>
-                    <div>${
-                      attributes?.eventName ?? "World Freedom Press Day"
-                    }</div>
+                    <div>${attributes.eventDate}</div>
+                    <div>${attributes?.eventName}</div>
                 </div>
             </div>
         </div>
@@ -42,9 +43,10 @@ export const template = (attributes: Attributes, options: Options): string => `
                 <span 
                     class="${styles.switchValue}"
                     data-value="${attributes.switch.replace(/"/g, "&quot;")}"
-                    data-value-alt="${`${attributes?.eventDate ?? "3 May"} • ${
-                      attributes?.eventName ?? "World Freedom Press Day"
-                    }`.replace(/"/g, "&quot;")}"
+                    data-value-alt="${`${attributes.eventDate} • ${attributes?.eventName}`.replace(
+                      /"/g,
+                      "&quot;"
+                    )}"
                 ></span>
                 <input type="checkbox" data-${
                   options.selector
