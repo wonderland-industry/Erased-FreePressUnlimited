@@ -110,6 +110,7 @@
   align-items: center;
   padding: 15px;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 .content ::selection {
@@ -161,7 +162,7 @@
   [data-closed] > .container .header {
     flex-direction: column-reverse;
     align-items: flex-start;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 110%;
   }
 
