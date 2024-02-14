@@ -16,14 +16,12 @@ const erase = new Erase({
 });
 
 /**
- *
  * Only show banner when
  * data-erase attribute is
  * ont the page
  */
 if (erase.hasElements) {
   /**
-   *
    * Create MOUNT element and
    * appends it to the body.
    */
@@ -32,7 +30,6 @@ if (erase.hasElements) {
   document.body.appendChild(MOUNT);
 
   /**
-   *
    * Initialize HTML parser, template
    * function is rendered to HTML and
    * injected in the MOUNT element.
@@ -41,14 +38,6 @@ if (erase.hasElements) {
   banner.render(config);
 
   /**
-   *
-   * Set initial state.
-   */
-  erase.ligeratures = banner.elements.checkbox.checked;
-  banner.setLigeratures(banner.elements.checkbox.checked);
-
-  /**
-   *
    * Set state on checkbox change.
    */
   banner.elements.checkbox.addEventListener("change", () => {

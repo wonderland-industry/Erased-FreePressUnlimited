@@ -1,6 +1,6 @@
-import { Attributes } from "./template";
+import { TemplateAttributes } from "./template";
 
-export const data: Attributes = {
+export const data: TemplateAttributes = {
   heading: "Press freedom is getting erased",
   paragraph:
     'Every journalist imprisoned is a lost perspective on the truth. To symbolise censorship, we are erasing one word for each imprisoned journalist worldwide. <a href="https://erased.freepressunlimited.org/" rel="noopener noreferrer" target="_blank">Learn more</a>',

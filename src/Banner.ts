@@ -1,12 +1,6 @@
-interface TemplateAttributes {
-  [key: string]: string | number | boolean;
-}
+import { TemplateAttributes, TemplateOptions } from "./template";
 
-interface TemplateOptions {
-  selector: string;
-}
-
-type Template = (
+export type Template = (
   attributes: TemplateAttributes,
   options: TemplateOptions
 ) => string;
@@ -15,6 +9,7 @@ export class Banner {
   private element: HTMLElement;
   private selector: string;
   private template: Template;
+  private initialState: boolean;
 
   public elements: any;
 
@@ -22,14 +17,18 @@ export class Banner {
     element,
     template,
     selector = "select",
+    initialState = false,
   }: {
     element: HTMLElement;
     template: Template;
     selector?: string;
+    initialState?: boolean;
   }) {
     this.element = element;
     this.selector = selector;
     this.template = template;
+    this.initialState = initialState;
+    this.setLigeratures(initialState);
   }
 
   /**
@@ -45,6 +44,7 @@ export class Banner {
   public render(attributes: TemplateAttributes) {
     this.element.innerHTML = this.template(attributes, {
       selector: this.selector,
+      initialState: this.initialState,
     });
 
     this.fillElements();

@@ -67,6 +67,7 @@ const erase = new Erase({
   context: document.body,
   selector: "erase",
   ignore: "erase-ignore",
+  initialState: false,
 });
 
 // Show erased words

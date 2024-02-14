@@ -1,7 +1,7 @@
 // @ts-ignore
 import styles from "./styles/banner.module.css";
 
-export interface Attributes {
+export interface TemplateAttributes {
   heading: string;
   paragraph: string;
   switch: string;
@@ -10,11 +10,19 @@ export interface Attributes {
   [key: string]: string;
 }
 
-interface Options {
+export interface TemplateOptions {
   selector: string;
+  initialState: boolean;
 }
 
-export const template = (attributes: Attributes, options: Options): string => `
+function escapeAttribute(value: string) {
+  return value.replace(/"/g, "&quot;");
+}
+
+export const template = (
+  attributes: TemplateAttributes,
+  options: TemplateOptions
+): string => `
     <div class="${styles.container}" data-${options.selector}="container">
         <button 
             class="${styles.handle}" 
@@ -42,15 +50,16 @@ export const template = (attributes: Attributes, options: Options): string => `
             <label class="${styles.switch}">
                 <span 
                     class="${styles.switchValue}"
-                    data-value="${attributes.switch.replace(/"/g, "&quot;")}"
-                    data-value-alt="${`${attributes.eventDate} • ${attributes?.eventName}`.replace(
-                      /"/g,
-                      "&quot;"
+                    data-value="${escapeAttribute(attributes.switch)}"
+                    data-value-alt="${escapeAttribute(
+                      `${attributes.eventDate} • ${attributes?.eventName}`
                     )}"
                 ></span>
-                <input type="checkbox" data-${
-                  options.selector
-                }="checkbox" checked>
+                <input 
+                    type="checkbox" 
+                    data-${options.selector}="checkbox"
+                    ${options.initialState ? "checked" : ""}
+                >
                 <span class="${styles.switchBase}">
                     <span class="${styles.switchOnOff}"></span>
                 </span>
