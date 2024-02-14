@@ -6,162 +6,324 @@
   font-weight: 400;
 }
 
-@font-face {
-  font-family: "Avenir";
-  src: url("../fonts/banner/Avenir-Heavy.woff2") format("woff2");
+/* Container */
 
-  font-style: normal;
-  font-weight: 800;
+.container,
+.container * {
+  box-sizing: border-box;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
   position: fixed;
   bottom: 0;
-  left: 0;
-  padding: 20px 20px;
+  right: 0;
   width: 100%;
-  background: #eeeeee;
-  overflow: hidden;
+  background: #ffe600 100% -20px url("../images/texture.webp");
+  background-size: 400px 283px;
   z-index: 2147483646;
 }
 
-.container,
-.container p,
-.container button,
-.container label span:after {
-  box-sizing: border-box;
+@media (min-width: 800px) {
+  .container {
+    width: 250px;
+    bottom: 50%;
+    transform: translateY(50%);
+
+    background-position: -20px 0;
+  }
+  [data-closed] > .container {
+    width: 100px;
+  }
 }
 
-.container h1,
-.container h2,
-.container h3,
-.container h4,
-.container h5 {
-  margin: 0;
-  padding: 0;
-  font-family: "The Erased";
+/* Open / close handle */
+
+.handle {
+  position: absolute;
+  right: 55px;
+  top: -20px;
+
+  height: 20px;
+  width: 56px;
+
+  overflow: hidden;
+  border: 0;
+  cursor: pointer;
+
+  background: #ffe600 calc(100% + 55px) 0 url("../images/texture.webp");
+  background-size: 400px 283px;
+}
+
+.handle:after {
+  content: "";
+  position: absolute;
+  left: calc(50% - 6px);
+  top: calc(50%);
+
+  width: 12px;
+  height: 8px;
+
+  background: no-repeat 50% 50%
+    url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iNyIgdmVjdG9yPSIwIDEgMCA3IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogPHBhdGggZD0iTSAxMSAxTCA2IDVMMSAxIiBzdHJva2U9IiMyODI4MjgiIHN0cm9rZS13aWR0aD0iMiIvPjwvc3ZnPg==");
+}
+
+[data-closed] > .container .handle:after {
+  transform: rotate(180deg);
+  top: calc(50% - 2px);
+}
+
+@media (min-width: 800px) {
+  .handle {
+    height: 56px;
+    width: 20px;
+    right: 100%;
+    top: 65px;
+
+    background-position: 0 -65px;
+  }
+
+  .handle:after {
+    transform: rotate(270deg);
+    top: calc(50% - 4px);
+    left: calc(50% - 2px);
+  }
+
+  [data-closed] > .container .handle:after {
+    transform: rotate(90deg);
+    top: calc(50% - 4px);
+    left: calc(50% - 4px);
+  }
+}
+
+/* Container Content */
+
+.content {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  flex-direction: column;
+}
+
+.content ::selection {
+  background: #282828;
+  color: #ffe600;
+}
+
+@media (min-width: 800px) {
+  .content {
+    padding-right: 10px;
+  }
+}
+
+/* Banner Erased text */
+
+.header,
+.event > div,
+.body {
+  font-family: "The Erased", serif;
+  font-feature-settings: "liga" off;
+}
+
+[data-ligeratures] > .container .header,
+[data-ligeratures] > .container .event > div,
+[data-ligeratures] > .container .body {
+  font-feature-settings: "liga";
+}
+
+/* Header */
+
+.header {
+  font-size: 18px;
+  line-height: 18px;
+  width: 100%;
+  color: #282828;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header svg {
+  width: 30px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+@media (min-width: 800px) {
+  [data-closed] > .container .header {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    font-size: 14px;
+    line-height: 110%;
+  }
+
+  .header svg {
+    width: 40px;
+  }
+}
+
+/* Body */
+
+.body {
+  font-size: 13px;
+  line-height: 130%;
+  white-space: wrap;
+  color: #282828;
+  font-style: normal;
+  text-align: left;
+
+  width: 100%;
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.body a,
+.body a:visited,
+.body a:link,
+.body a:hover,
+.body a:active,
+.body a:focus {
+  text-decoration: underline;
   color: #282828;
 }
 
-.container h3 {
-  font-size: 15px;
-  line-height: 15px;
+.body a:hover {
+  opacity: 0.75;
 }
 
-.container p,
-.container a,
-.container a:visited,
-.container a:link,
-.container a:hover,
-.container a:active,
-.container a:focus,
-.container em,
-.container label {
-  margin: 0;
-  padding: 0;
+[data-closed] > .container .body {
+  display: none;
+}
+
+@media (min-width: 800px) {
+  [data-closed] > .container .body {
+    display: block;
+
+    > p {
+      display: none;
+    }
+  }
+}
+
+/* Event */
+
+.event {
+  font-size: 0;
+}
+
+.event > div {
+  font-size: 11px;
+  line-height: 11px;
+  display: inline-block;
+}
+
+.event > div:not(:last-child):after {
+  display: inline-block;
+  content: "•";
+  margin: 0 5px;
+}
+
+@media (min-width: 800px) {
+  .event > div {
+    font-size: 10px;
+    line-height: 130%;
+  }
+
+  [data-closed] > .container .event > div:not(:last-child):after {
+    content: "";
+    display: none;
+  }
+}
+
+/* Switch */
+
+.switch {
   font-family: "Avenir", sans-serif;
   font-size: 12px;
-  line-height: 16px;
-  font-style: normal;
-  text-decoration: none;
-  color: #282828;
-  text-align: left;
-}
+  line-height: 12px;
+  color: #fff;
 
-.container a:hover {
-  opacity: 0.5;
-}
-
-.container label {
-  font-size: 10px;
-}
-
-.container a,
-.container em,
-.container label {
-  font-weight: 800;
-}
-
-.container a {
-  text-decoration: underline;
-}
-
-.container svg {
-  margin: 0 10px 0 0;
-  width: 30px;
-}
-
-.container h3,
-.container svg {
-  vertical-align: middle;
-}
-
-.container p {
-  display: block;
-}
-
-.container .justify {
   display: flex;
   justify-content: space-between;
-  vertical-align: middle;
-  margin: 0 0 25px;
-}
+  gap: 10px;
+  align-items: center;
 
-.container h3,
-.container button {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.container label {
   position: relative;
-  margin: 2px 0 0;
-  height: 30px;
   cursor: pointer;
   z-index: 2147483647;
-  vertical-align: middle;
+  white-space: wrap;
+  user-select: none;
 }
 
-.container label span {
+.switchBase {
   position: relative;
-
-  display: inline-block;
-  vertical-align: middle;
-  height: 30px;
-  width: 40px;
-  margin: 0 0 0 10px;
+  height: 28px;
+  width: 60px;
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 
-.container label span:before {
+.switchBase:before {
   content: "";
+  transition: background-color 0.15s;
 
   position: absolute;
-  right: 0;
   top: 0;
-
-  height: 30px;
-  width: 40px;
-  background: #282828;
-  border-radius: 100px;
-  pointer-events: none;
-}
-
-.container label span:after {
-  content: "";
-
-  position: absolute;
   left: 0;
-  top: 0;
 
-  height: 30px;
-  width: 30px;
-  border: 2px solid #282828;
-  background: #eeeeee;
+  height: 100%;
+  width: 100%;
+  background: #eee;
   border-radius: 100px;
   pointer-events: none;
 }
 
-.container label input[type="checkbox"] {
+.switchBase:after {
+  content: "";
+
+  position: absolute;
+  top: 3px;
+  left: 3px;
+
+  height: 22px;
+  width: 22px;
+  border: 1px solid #cbb700;
+  background: #ffe600;
+  border-radius: 100px;
+  pointer-events: none;
+  transition: left 0.15s, background-color 0.15s;
+}
+
+.switchValue:after {
+  content: attr(data-value);
+  display: inline;
+}
+
+[data-closed] > .container .switchValue:after {
+  content: attr(data-value-alt);
+}
+
+@media (min-width: 800px) {
+  [data-closed] > .container .switchValue {
+    display: none;
+  }
+  [data-closed] > .container .switch {
+    justify-content: center;
+  }
+  [data-closed] > .container .switchValue:after {
+    content: attr(data-value);
+  }
+}
+
+.switch input[type="checkbox"] {
   position: absolute;
   top: 0;
   right: 0;
@@ -174,55 +336,47 @@
   padding: 0;
 }
 
-.container label input[type="checkbox"]:checked + span::after {
-  right: 0;
-  left: auto;
-
+.switch input[type="checkbox"]:checked + .switchBase:before {
   background: #ffe600;
 }
 
-@media (min-width: 869px) {
-  .container {
-    padding: 15px 40px;
-  }
-
-  .container .justify {
-    margin: 0;
-  }
-
-  .container p {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    margin: auto;
-    padding: 0 0 0 40px;
-    height: 20px;
-    line-height: 20px;
-    text-align: center;
-  }
+.switch input[type="checkbox"]:checked + .switchBase:after {
+  left: 34px;
+  background: #eee no-repeat 50% 50%
+    url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOSIgaGVpZ2h0PSI4IiB2aWV3Qm94PSIwIDAgOSA4IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogPHBhdGggZD0iTSAxIDQuNUwzLjUgNi41TDggMU0xIDQuNSIgc3Ryb2tlPSJibGFjayIvPgo8L3N2Zz4=");
 }
 
-@media (min-width: 1040px) {
-  .container p,
-  .container a,
-  .container a:visited,
-  .container a:link,
-  .container a:active,
-  .container a:focus,
-  .container em,
-  .container label {
-    font-size: 15px;
-    line-height: 20px;
-  }
+.switchOnOff:before {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #282828;
+  text-align: center;
+  width: 35px;
 
-  .container h3 {
-    font-size: 20px;
-    line-height: 20px;
-  }
+  font-family: "Avenir";
+  font-size: 8px;
+  line-height: 8px;
+  text-transform: uppercase;
+  transition: left 0.15s;
 
-  .container label span:after {
-    border: 5px solid #282828;
-  }
+  left: 25px;
+  content: "off";
+}
+
+.switch input[type="checkbox"]:checked + .switchBase .switchOnOff:before {
+  left: 0;
+  content: "on";
+}
+
+/* Footer */
+
+.footer {
+  padding: 10px 15px;
+  background-color: #282828;
+}
+
+.footer ::selection {
+  background: #ffe600;
+  color: #282828;
 }
