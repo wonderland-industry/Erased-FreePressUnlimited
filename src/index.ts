@@ -13,12 +13,14 @@ const erase = new Erase({
   context: document.body,
   selector: "erase",
   ignore: "erase-ignore",
+  initialState: false,
 });
 
 /**
  * Only show banner when
- * data-erase attribute is
- * ont the page
+ * elements with the
+ * data-erase attribute are
+ * found on the page.
  */
 if (erase.hasElements) {
   /**
@@ -34,14 +36,15 @@ if (erase.hasElements) {
    * function is rendered to HTML and
    * injected in the MOUNT element.
    */
-  const banner = new Banner({ element: MOUNT, template });
+  const banner = new Banner({ element: MOUNT, template, initialState: false });
   banner.render(config);
 
   /**
    * Set state on checkbox change.
    */
   banner.elements.checkbox.addEventListener("change", () => {
-    erase.ligeratures = banner.elements.checkbox.checked;
-    banner.setLigeratures(banner.elements.checkbox.checked);
+    const active = (banner.elements.checkbox as HTMLInputElement).checked;
+    erase.ligeratures = active;
+    banner.setLigeratures(active);
   });
 }

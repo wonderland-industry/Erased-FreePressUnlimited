@@ -11,7 +11,7 @@ export class Banner {
   private template: Template;
   private initialState: boolean;
 
-  public elements: any;
+  public elements: Record<string, HTMLElement>;
 
   constructor({
     element,
@@ -60,7 +60,7 @@ export class Banner {
 
   public destroy() {
     this.element.innerHTML = "";
-    this.elements = [];
+    this.elements = {};
   }
 
   public setLigeratures(value: boolean) {
