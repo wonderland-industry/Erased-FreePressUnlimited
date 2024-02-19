@@ -16,20 +16,38 @@ if (process.env.LANG_RU) {
 if (process.env.LANG_AR) {
   require("./styles/erased.ar.css");
 }
-if (!process.env.LANG_RU && !process.env.LANG_NL && !process.env.LANG_FR && !process.env.LANG_ES && !process.env.LANG_EN && !process.env.LANG_AR) {
+if (
+  !process.env.LANG_RU &&
+  !process.env.LANG_NL &&
+  !process.env.LANG_FR &&
+  !process.env.LANG_ES &&
+  !process.env.LANG_EN &&
+  !process.env.LANG_AR
+) {
   require("./styles/erased.css");
 }
 
 export class Erase {
-  private value: boolean;
+  private value: boolean = false;
   private context: Element;
   private elements: Array<HTMLElement>;
 
-  constructor({ context = document.body, selector = "erase", ignore = "erase-ignore" }: { context: Element; selector: string; ignore: string }) {
+  constructor({
+    context = document.body,
+    selector = "erase",
+    ignore = "erase-ignore",
+    initialState = false,
+  }: {
+    context: Element;
+    selector: string;
+    ignore: string;
+    initialState?: boolean;
+  }) {
     this.context = context;
     this.fillElements(selector);
     this.ignore(ignore);
     this.include(selector);
+    this.ligeratures = !!initialState;
   }
 
   get hasElements(): boolean {
@@ -53,10 +71,16 @@ export class Erase {
    * @param selector the ignore data selector.
    */
   private ignore(selector: string) {
-    const nodes: NodeListOf<HTMLElement> = this.context.querySelectorAll(`[data-${selector}]`);
+    const nodes: NodeListOf<HTMLElement> = this.context.querySelectorAll(
+      `[data-${selector}]`
+    );
     const array: Array<HTMLElement> = Array.from(nodes);
 
-    for (let index = 0, styles = null, limit = array.length; index < limit; index++) {
+    for (
+      let index = 0, styles = null, limit = array.length;
+      index < limit;
+      index++
+    ) {
       styles = window.getComputedStyle(array[index]);
       array[index].style.fontFamily = styles.getPropertyValue("font-family");
     }
@@ -71,7 +95,9 @@ export class Erase {
    * @param selector the erase selector
    */
   private include(selector: string) {
-    const nodes: NodeListOf<HTMLElement> = this.context.querySelectorAll(`[data-${selector}]`);
+    const nodes: NodeListOf<HTMLElement> = this.context.querySelectorAll(
+      `[data-${selector}]`
+    );
     const array: Array<HTMLElement> = Array.from(nodes);
 
     for (let index = 0, limit = array.length; index < limit; index++) {
@@ -89,7 +115,9 @@ export class Erase {
    * @param selector the erase selector
    */
   private fillElements(selector: string) {
-    const nodes: NodeListOf<HTMLElement> = this.context.querySelectorAll(`[data-${selector}]`);
+    const nodes: NodeListOf<HTMLElement> = this.context.querySelectorAll(
+      `[data-${selector}]`
+    );
     const array: Array<HTMLElement> = Array.from(nodes);
     this.elements = array;
   }

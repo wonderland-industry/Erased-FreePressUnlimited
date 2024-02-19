@@ -1,8 +1,12 @@
-export const data = {
-  heading: "the Erased font",
+import { TemplateAttributes } from "./template";
+
+export const data: TemplateAttributes = {
+  heading: "Press freedom is getting erased",
   paragraph:
-    'Erasing a word for every imprisoned journalist, making the loss of press free visible. <a href="https://erased.freepressunlimited.org/" rel="noopener noreferrer" target="_blank">Learn more</a>',
-  button: "Erase",
+    'Every journalist imprisoned is a lost perspective on the truth. To symbolise censorship, we are erasing one word for each imprisoned journalist worldwide. <a href="https://erased.freepressunlimited.org/" rel="noopener noreferrer" target="_blank">Learn more</a>',
+  switch: "View the loss of truth on this page",
+  eventDate: "3 May",
+  eventName: "World Press Freedom Day",
 };
 
 export default data;
