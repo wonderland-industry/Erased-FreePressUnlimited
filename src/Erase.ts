@@ -99,10 +99,16 @@ export class Erase {
       `[data-${selector}]`
     );
     const array: Array<HTMLElement> = Array.from(nodes);
-
     for (let index = 0, limit = array.length; index < limit; index++) {
-      array[index].style.fontFamily = "The Erased";
-      array[index].style.fontFeatureSettings = `"liga" off`;
+      const computed = window.getComputedStyle(array[index]);
+      array[index].setAttribute(
+        "data-erase-initial-family",
+        computed.getPropertyValue("font-family")
+      );
+      array[index].setAttribute(
+        "data-erase-initial-feature",
+        computed.getPropertyValue("font-feature-settings")
+      );
     }
   }
 
@@ -127,9 +133,16 @@ export class Erase {
    * Update ligeratures.
    */
   update() {
-    const value = this.ligeratures ? "on" : "off";
     for (let index = 0, limit = this.elements.length; index < limit; index++) {
-      this.elements[index].style.fontFeatureSettings = `"liga" ${value}`;
+      if (this.ligeratures) {
+        this.elements[index].style.fontFamily = "The Erased";
+        this.elements[index].style.fontFeatureSettings = `"liga" on`;
+      } else {
+        this.elements[index].style.fontFamily =
+          this.elements[index].getAttribute("data-erase-initial-family") ?? "";
+        this.elements[index].style.fontFeatureSettings =
+          this.elements[index].getAttribute("font-feature-settings") ?? "";
+      }
     }
   }
 }
