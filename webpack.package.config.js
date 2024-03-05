@@ -49,7 +49,9 @@ const config = (env) => {
         "process.env.LANG_RU": env.lang === "ru",
         "process.env.LANG_AR": env.lang === "ar",
       }),
-      new MiniCssExtractPlugin({ filename: env.lang ? `erase.${env.lang}.css` : "erase.css" }),
+      new MiniCssExtractPlugin({
+        filename: env.lang ? `erase.${env.lang}.css` : "erase.css",
+      }),
     ],
     resolve: {
       extensions: [".tsx", ".ts", ".jsx", ".js", "..."],
