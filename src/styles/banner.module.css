@@ -21,7 +21,7 @@
   bottom: 0;
   right: 0;
   width: 100%;
-  background: #ffe600 100% -20px url("../images/texture.webp");
+  background: #ffe600 100% -20px url("../images/texture.webp") !important;
   background-size: 400px 283px;
   z-index: 2147483646;
   display: flex;

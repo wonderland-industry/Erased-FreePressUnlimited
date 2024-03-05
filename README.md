@@ -58,6 +58,7 @@ For example:
 - Erase.js will work the best if applied directly to the element that provides the font-family styling (to avoid overwritten styles)
 - The Erase.js banner is using scoped styles so will never overwrite the host site styling
 - The font is subject to change, erased words are added as visualisation of press freedom
+- The banner will only show if it found any element with the attribute selector (by default `data-erase`) on the page it it loaded on
 
 ## Other usages
 

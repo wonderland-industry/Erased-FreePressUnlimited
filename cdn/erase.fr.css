@@ -26,7 +26,7 @@
   bottom: 0;
   right: 0;
   width: 100%;
-  background: #ffe600 100% -20px url(ac5ed49eb609a721141b.webp);
+  background: #ffe600 100% -20px url(ac5ed49eb609a721141b.webp) !important;
   background-size: 400px 283px;
   z-index: 2147483646;
   display: flex;
