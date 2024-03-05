@@ -88,4 +88,4 @@ erase.ligeratures = true;
 erase.ligeratures = false;
 ```
 
-![The Erased Font](src/images/readme-footer.gif)
+[![The Erased Font](src/images/readme-footer.gif)](https://erased.freepressunlimited.org)
