@@ -179,19 +179,21 @@
 /* Body */
 
 .R4wKAm0Zg0IbcFO98Fre {
-  font-size: 13px;
-  line-height: 130%;
-  white-space: wrap;
-  color: #282828;
-  font-style: normal;
-  text-align: left;
-
   width: 100%;
   flex-basis: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: flex-start;
+}
+
+.R4wKAm0Zg0IbcFO98Fre p {
+  font-size: 13px;
+  line-height: 130%;
+  white-space: wrap;
+  color: #282828;
+  font-style: normal;
+  text-align: left;
 }
 
 .R4wKAm0Zg0IbcFO98Fre a,
