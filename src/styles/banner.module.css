@@ -21,7 +21,7 @@
   bottom: 0;
   right: 0;
   width: 100%;
-  background: #ffe600 100% -20px url("../images/texture.webp");
+  background: #ffe600 100% -20px url("../images/texture.webp") !important;
   background-size: 400px 283px;
   z-index: 2147483646;
   display: flex;
@@ -174,19 +174,21 @@
 /* Body */
 
 .body {
-  font-size: 13px;
-  line-height: 130%;
-  white-space: wrap;
-  color: #282828;
-  font-style: normal;
-  text-align: left;
-
   width: 100%;
   flex-basis: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: flex-start;
+}
+
+.body p {
+  font-size: 13px;
+  line-height: 130%;
+  white-space: wrap;
+  color: #282828;
+  font-style: normal;
+  text-align: left;
 }
 
 .body a,
