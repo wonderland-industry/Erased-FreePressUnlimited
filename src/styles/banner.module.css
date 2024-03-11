@@ -35,7 +35,7 @@
     transform: translateY(50%);
     min-height: 265px;
     justify-content: space-between;
-    background-position: -20px 0;
+    background-position: -20px 0 !important;
   }
   [data-closed] > .container {
     width: 100px;
@@ -128,7 +128,9 @@
 
 .header,
 .event > div,
-.body {
+.body,
+.body a,
+.body .bodyText {
   font-family: "The Erased", serif;
   font-feature-settings: "liga" off;
 }
@@ -182,7 +184,7 @@
   align-items: flex-start;
 }
 
-.body p {
+.body .bodyText {
   font-size: 13px;
   line-height: 130%;
   white-space: wrap;

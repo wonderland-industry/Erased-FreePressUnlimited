@@ -39,7 +39,7 @@ export const template = (
                 </svg>
             </h3>
             <div class="${styles.body}">
-                <p>${attributes.paragraph}</p>
+                <p class="${styles.bodyText}">${attributes.paragraph}</p>
                 <div class="${styles.event}">
                     <div>${attributes.eventDate}</div>
                     <div>${attributes?.eventName}</div>

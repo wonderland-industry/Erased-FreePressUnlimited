@@ -40,7 +40,7 @@
     transform: translateY(50%);
     min-height: 265px;
     justify-content: space-between;
-    background-position: -20px 0;
+    background-position: -20px 0 !important;
   }
   [data-closed] > .CZvlMiTaJPn2Fw1rO3aC {
     width: 100px;
@@ -133,7 +133,9 @@
 
 .qKh1BwiniIjduGl3yCjU,
 .jvAWQ0DYy0EgT73Cfg0_ > div,
-.R4wKAm0Zg0IbcFO98Fre {
+.R4wKAm0Zg0IbcFO98Fre,
+.R4wKAm0Zg0IbcFO98Fre a,
+.R4wKAm0Zg0IbcFO98Fre .ndpYWwYVAO_4C2RKrNAh {
   font-family: "The Erased", serif;
   font-feature-settings: "liga" off;
 }
@@ -187,7 +189,7 @@
   align-items: flex-start;
 }
 
-.R4wKAm0Zg0IbcFO98Fre p {
+.R4wKAm0Zg0IbcFO98Fre .ndpYWwYVAO_4C2RKrNAh {
   font-size: 13px;
   line-height: 130%;
   white-space: wrap;
