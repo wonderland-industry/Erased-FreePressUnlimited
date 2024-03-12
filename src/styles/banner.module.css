@@ -137,7 +137,9 @@
 
 [data-ligeratures] > .container .header,
 [data-ligeratures] > .container .event > div,
-[data-ligeratures] > .container .body {
+[data-ligeratures] > .container .body,
+[data-ligeratures] > .container .body a,
+[data-ligeratures] > .container .body .bodyText {
   font-feature-settings: "liga";
 }
 
